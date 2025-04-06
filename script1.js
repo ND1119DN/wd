@@ -1,15 +1,15 @@
 function fetchWeather() {
     const city = document.getElementById("city").value.trim();
     if (!city) {
-       document.getElementById("weather"). innerText = "Please enter a city.";
+       document.getElementById("weather").innerText = "Please enter a city.";
        return;
     }
     const geoApiUrl = 'https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=en&format=json';
     fetch(geoApiUrl)
-     .then(response => response. json())
+     .then(response => response.json())
      .then(data => {
-        if (!data.results || data.results. length === 0) {
-            document.getElementById ("weather"). innerText = "City not found.";
+        if (!data.results || data.results.length === 0) {
+            document.getElementById ("weather").innerText = "City not found.";
             return;
         }
    
@@ -28,7 +28,7 @@ function fetchWeather() {
             const temp = weatherData.current_weather.temperature;
             const windSpeed = weatherData.current_weather.windspeed;
             const condition = weatherData.current_weather.weathercode;
-            document.getElementById("weather"). innerText = 'Temperature: ${temp}°C |windspeed: $(windspeed)km/h |condition: $(condition)';
+            document.getElementById("weather"). innerText = 'Temperature: ${temp}°C |windspeed: $(windspeed)km/h |weathercode: $(condition)';
             })
            .catch(error => {
               console.error ("Error fetching weather:", error);
